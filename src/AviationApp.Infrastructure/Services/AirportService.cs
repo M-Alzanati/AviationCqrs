@@ -2,7 +2,6 @@ using AutoMapper;
 using AviationApp.Application.Common.Interface;
 using AviationApp.Domain.Entities;
 using AviationApp.Domain.Interfaces;
-using Flight = AviationApp.Common.Clients.AviationStack.Flight;
 
 namespace AviationApp.Infrastructure.Services;
 

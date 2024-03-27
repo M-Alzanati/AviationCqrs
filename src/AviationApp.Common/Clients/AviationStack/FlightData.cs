@@ -12,7 +12,7 @@ public class FlightInfo
     public LocationInfo? Departure { get; set; }
     public LocationInfo? Arrival { get; set; }
     public AirlineInfo? Airline { get; set; }
-    public Flight? Flight { get; set; }
+    public FlightDetail? Flight { get; set; }
     public string? Aircraft { get; set; }
     public string? Live { get; set; }
 }
@@ -40,7 +40,7 @@ public class AirlineInfo
     public string? Icao { get; set; }
 }
 
-public class Flight
+public class FlightDetail
 {
     public string? Number { get; set; }
     public string? Iata { get; set; }

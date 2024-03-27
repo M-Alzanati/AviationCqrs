@@ -17,4 +17,7 @@ public class FlightDto
     public string AirlineName { get; set; }
     
     public string FlightNumber { get; set; }
-}
+    
+    public string? ArrivalIataCode { get; set; }
+    
+    public string? DepartureIataCode { get; set; }}

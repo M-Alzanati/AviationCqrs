@@ -17,10 +17,15 @@ public class GetFlightsWithPaginationQueryHandler(IAirportService airportService
     public async Task<ApiResponse<PaginatedList<AirportDto>>> Handle(GetAirportsWithPaginationQuery request, CancellationToken cancellationToken)
     {
         var airports = await airportService.GetPaginatedAirports(request.PageNumber, request.PageSize, cancellationToken);
+        if (!airports.Any())
+        {
+            return ApiResponse<PaginatedList<AirportDto>>.Create(null!, false, "No data found.");
+        }
+        
         var mappedResult = mapper.Map<IEnumerable<AirportDto>>(airports);
         return ApiResponse<PaginatedList<AirportDto>>.Create(
             PaginatedList<AirportDto>.Create(mappedResult, request.PageNumber, request.PageSize), 
             true, 
-            string.Empty);
+            "Data retrieved successfully.");
     }
 }

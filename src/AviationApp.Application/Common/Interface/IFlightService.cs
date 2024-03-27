@@ -9,4 +9,6 @@ public interface IFlightService
     Task ImportFlights(CancellationToken cancellationToken);
     
     Task<IEnumerable<Flight>> GetPaginatedFlights(int pageNumber, int pageSize, CancellationToken cancellationToken);
+
+    Task<IEnumerable<Flight>> GetPaginatedFlights(string? iataCode, int pageNumber, int pageSize, CancellationToken cancellationToken);
 }

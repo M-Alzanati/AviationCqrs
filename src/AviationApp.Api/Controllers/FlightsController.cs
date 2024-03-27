@@ -22,6 +22,7 @@ public class FlightsController : ControllerBase
     /// <param name="command"></param>
     /// <returns></returns>
     [HttpPost]
+    [Route("import")]
     public async Task<IActionResult> CreateFlight([FromBody] ImportFlightsCommand command)
     {
         var result = await _mediator.Send(command);
@@ -34,7 +35,21 @@ public class FlightsController : ControllerBase
     /// <param name="query"></param>
     /// <returns></returns>
     [HttpGet]
+    [Route("get")]
     public async Task<IActionResult> GetFlights([FromQuery] GetFlightsWithPaginationQuery query)
+    {
+        var flights = await _mediator.Send(query);
+        return Ok(flights);
+    }
+    
+    /// <summary>
+    /// Get Flights
+    /// </summary>
+    /// <param name="query"></param>
+    /// <returns></returns>
+    [HttpGet]
+    [Route("iata")]
+    public async Task<IActionResult> GetFlightsWithIata([FromQuery] GetFlightsWithIataCodeQuery query)
     {
         var flights = await _mediator.Send(query);
         return Ok(flights);

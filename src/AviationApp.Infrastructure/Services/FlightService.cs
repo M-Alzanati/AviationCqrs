@@ -2,6 +2,7 @@ using AutoMapper;
 using AviationApp.Application.Common.Interface;
 using AviationApp.Domain.Entities;
 using AviationApp.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace AviationApp.Infrastructure.Services;
 
@@ -33,5 +34,13 @@ public class FlightService(IAviationStackService aviationStackService, IFlightRe
     public async Task<IEnumerable<Flight>> GetPaginatedFlights(int pageNumber, int pageSize, CancellationToken cancellationToken)
     {
         return await flightRepository.GetFlights(pageNumber, pageSize, cancellationToken);
+    }
+    
+    public async Task<IEnumerable<Flight>> GetPaginatedFlights(string? iataCode, int pageNumber, int pageSize, CancellationToken cancellationToken)
+    {
+        return await flightRepository.Get(p => p.ArrivalIataCode == iataCode || p.DepartureIataCode == iataCode).
+            Skip((pageNumber - 1) * pageSize).
+            Take(pageSize).
+            ToListAsync(cancellationToken);
     }
 }

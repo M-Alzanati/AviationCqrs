@@ -22,6 +22,7 @@ public class AirportsController : ControllerBase
     /// <param name="command"></param>
     /// <returns></returns>
     [HttpPost]
+    [Route("import")]
     public async Task<IActionResult> ImportAirports([FromBody] ImportAirportsCommand command)
     {
         var result = await _mediator.Send(command);
@@ -34,6 +35,7 @@ public class AirportsController : ControllerBase
     /// <param name="query"></param>
     /// <returns></returns>
     [HttpGet]
+    [Route("get")]
     public async Task<IActionResult> GetFlights([FromQuery] GetAirportsWithPaginationQuery query)
     {
         var flights = await _mediator.Send(query);

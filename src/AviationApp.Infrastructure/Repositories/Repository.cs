@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using AviationApp.Domain.Entities.Base;
 using AviationApp.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,31 @@ public class Repository<T> : IRepository<T> where T : class, IEntity
         return await _entities.FindAsync(id, cancellationToken);
     }
 
+    public IQueryable<T> Get(
+        Expression<Func<T, bool>>? filter = null,
+        Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
+        IEnumerable<string>? includeProperties = null)
+    {
+        IQueryable<T> query = _entities;
+
+        if (filter != null)
+        {
+            query = query.Where(filter);
+        }
+
+        if (includeProperties == null)
+        {
+            return orderBy != null ? orderBy(query).AsQueryable() : query.AsQueryable();
+        }
+
+        foreach (var includeProperty in includeProperties)
+        {
+            query = query.Include(includeProperty);
+        }
+
+        return query.AsQueryable();
+    }
+    
     public async Task Insert(T? obj, CancellationToken cancellationToken)
     {
         if (obj != null)
