@@ -20,6 +20,8 @@ public class FlightProfile : Profile
             .ForMember(e => e.ArrivalScheduled, opt => opt.MapFrom(e => e.Arrival!.Scheduled))
             .ForMember(e => e.DepartureAirport, opt => opt.MapFrom(e => e.Departure!.Airport))
             .ForMember(e => e.DepartureScheduled, opt => opt.MapFrom(e => e.Departure!.Scheduled))
-            .ForMember(e => e.AirlineName, opt => opt.MapFrom(e => e.Airline!.Name));
+            .ForMember(e => e.AirlineName, opt => opt.MapFrom(e => e.Airline!.Name))
+            .ForMember(e => e.ArrivalIataCode, opt => opt.MapFrom(e => e.Arrival!.Iata))
+            .ForMember(e => e.DepartureIataCode, opt => opt.MapFrom(e => e.Departure!.Iata));
     }
 }

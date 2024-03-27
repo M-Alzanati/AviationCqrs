@@ -22,5 +22,7 @@ public class Flight : IEntity
     
     public string? FlightNumber { get; set; }
     
-    public string? IataCode { get; set; }
+    public string? ArrivalIataCode { get; set; }
+    
+    public string? DepartureIataCode { get; set; }
 }
