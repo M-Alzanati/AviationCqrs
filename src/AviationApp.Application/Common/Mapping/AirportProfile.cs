@@ -1,4 +1,5 @@
 using AutoMapper;
+using AviationApp.Application.Airports.Queries;
 using AviationApp.Common.Clients.AviationStack;
 using AviationApp.Domain.Entities;
 
@@ -8,6 +9,8 @@ public class AirportProfile : Profile
 {
     public AirportProfile()
     {
+        CreateMap<Airport, AirportDto>();
+
         CreateMap<AirportInfo, Airport>()
             .ForMember(e => e.AirportName, c => c.MapFrom(x => x.AirportName))
             .ForMember(e => e.Timezone, c => c.MapFrom(x => x.Timezone))

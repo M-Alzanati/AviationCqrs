@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AviationApp.Infrastructure.Repositories;
 
-public class GenericRepository<T> : IGenericRepository<T> where T : class, IEntity
+public class Repository<T> : IRepository<T> where T : class, IEntity
 {
     private readonly DbContext _context;
     private readonly DbSet<T> _entities;
 
-    public GenericRepository(DbContext context)
+    public Repository(DbContext context)
     {
         this._context = context;
         _entities = context.Set<T>();

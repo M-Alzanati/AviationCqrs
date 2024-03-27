@@ -1,4 +1,5 @@
 using AviationApp.Application.Airports.Commands;
+using AviationApp.Application.Airports.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,7 +17,7 @@ public class AirportsController : ControllerBase
     }
 
     /// <summary>
-    /// Import Flights
+    /// Import Airports
     /// </summary>
     /// <param name="command"></param>
     /// <returns></returns>
@@ -25,5 +26,17 @@ public class AirportsController : ControllerBase
     {
         var result = await _mediator.Send(command);
         return Ok(result);
+    }
+    
+    /// <summary>
+    /// Get Airports
+    /// </summary>
+    /// <param name="query"></param>
+    /// <returns></returns>
+    [HttpGet]
+    public async Task<IActionResult> GetFlights([FromQuery] GetAirportsWithPaginationQuery query)
+    {
+        var flights = await _mediator.Send(query);
+        return Ok(flights);
     }
 }

@@ -11,13 +11,13 @@ public class GetFlightsWithPaginationQuery : IRequest<PaginatedList<FlightDto>>,
     public int PageSize { get; set; } = 20;
 }
 
-public class GetFlightsWithPaginationQueryHandler(IAviationStackService aviationStackService, IMapper mapper)
+public class GetFlightsWithPaginationQueryHandler(IFlightService flightService, IMapper mapper)
     : IRequestHandler<GetFlightsWithPaginationQuery, PaginatedList<FlightDto>>
 {
     public async Task<PaginatedList<FlightDto>> Handle(GetFlightsWithPaginationQuery request, CancellationToken cancellationToken)
     {
-        var flightData = await aviationStackService.GetFlightsData(cancellationToken);
-        var mappedResult = mapper.Map<IEnumerable<FlightDto>>(flightData.Data);
+        var flights = await flightService.GetPaginatedFlights(request.PageNumber, request.PageSize, cancellationToken);
+        var mappedResult = mapper.Map<IEnumerable<FlightDto>>(flights);
         return PaginatedList<FlightDto>.Create(mappedResult, request.PageNumber, request.PageSize);
     }
 }

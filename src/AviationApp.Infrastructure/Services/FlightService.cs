@@ -29,4 +29,9 @@ public class FlightService(IAviationStackService aviationStackService, IFlightRe
 
         await flightRepository.Save(cancellationToken);
     }
+
+    public async Task<IEnumerable<Flight>> GetPaginatedFlights(int pageNumber, int pageSize, CancellationToken cancellationToken)
+    {
+        return await flightRepository.GetFlights(pageNumber, pageSize, cancellationToken);
+    }
 }

@@ -2,6 +2,7 @@ using AutoMapper;
 using AviationApp.Application.Common.Interface;
 using AviationApp.Domain.Entities;
 using AviationApp.Domain.Interfaces;
+using Flight = AviationApp.Common.Clients.AviationStack.Flight;
 
 namespace AviationApp.Infrastructure.Services;
 
@@ -28,5 +29,10 @@ public class AirportService(IAviationStackService aviationStackService, IAirport
         }
 
         await airportRepository.Save(cancellationToken);
+    }
+
+    public async Task<IEnumerable<Airport>> GetPaginatedAirports(int pageNumber, int pageSize, CancellationToken cancellationToken)
+    {
+        return await airportRepository.GetAirports(pageNumber, pageSize, cancellationToken);
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AviationApp.Infrastructure.Repositories;
 
-public class FlightRepository : GenericRepository<Flight>, IFlightRepository
+public class FlightRepository : Repository<Flight>, IFlightRepository
 {
     private readonly AviationDbContext _context;
 
@@ -14,11 +14,11 @@ public class FlightRepository : GenericRepository<Flight>, IFlightRepository
         _context = context;
     }
 
-    public async Task<IEnumerable<Flight>> GetFlights(int page, int size)
+    public async Task<IEnumerable<Flight>> GetFlights(int page, int size, CancellationToken cancellationToken)
     {
         return await _context.Flights
             .Skip((page - 1) * size)
             .Take(size)
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
     }
 }

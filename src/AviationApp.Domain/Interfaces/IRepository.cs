@@ -2,7 +2,7 @@ using AviationApp.Domain.Entities.Base;
 
 namespace AviationApp.Domain.Interfaces;
 
-public interface IGenericRepository<T> where T : class, IEntity
+public interface IRepository<T> where T : class, IEntity
 {
     Task<IEnumerable<T?>> GetAll(CancellationToken cancellationToken);
     
