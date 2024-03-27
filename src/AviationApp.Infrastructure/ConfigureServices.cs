@@ -21,6 +21,8 @@ public static class ConfigureServices
         services.AddScoped<IAirportRepository, AirportRepository>();
         
         services.AddScoped<IAviationStackService, AviationStackService>();
+        services.AddScoped<IFlightService, FlightService>();
+        services.AddScoped<IAirportService, AirportService>();
 
         services.AddRestClients();
         return services;

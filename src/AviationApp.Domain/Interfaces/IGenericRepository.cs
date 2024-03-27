@@ -13,6 +13,8 @@ public interface IGenericRepository<T> where T : class, IEntity
     Task Update(T? obj);
     
     Task Delete(int id, CancellationToken cancellationToken);
-    
+
+    Task<bool> Any(CancellationToken cancellationToken);
+
     Task Save(CancellationToken cancellationToken);
 }

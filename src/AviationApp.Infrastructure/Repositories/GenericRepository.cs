@@ -46,6 +46,12 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class, IEnti
         if (existing != null) _entities.Remove(existing);
     }
 
+    public async Task<bool> Any(CancellationToken cancellationToken)
+    {
+        return await _entities
+            .AnyAsync(cancellationToken);
+    }
+    
     public async Task Save(CancellationToken cancellationToken)
     {
         await _context.SaveChangesAsync(cancellationToken);

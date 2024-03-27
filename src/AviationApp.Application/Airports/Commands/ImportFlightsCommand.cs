@@ -11,23 +11,13 @@ public class ImportAirportsCommand : IRequest<bool>
     
 }
 
-public class ImportAirportsCommandHandler(IAirportRepository airportRepository, IAviationStackService aviationStackService, IMapper mapper) : IRequestHandler<ImportAirportsCommand, bool>
+public class ImportAirportsCommandHandler(IAirportService airportService) : IRequestHandler<ImportAirportsCommand, bool>
 {
     public async Task<bool> Handle(ImportAirportsCommand request, CancellationToken cancellationToken)
     {
-        var airports = await aviationStackService.GetAirportsData(cancellationToken);
-
-        if (airports.Data == null || !airports.Data.Any())
-        {
-            return false;
-        }
+        if (await airportService.CanImportAirports(cancellationToken)) return false;
         
-        foreach (var flight in airports.Data)
-        {
-            await airportRepository.Insert(mapper.Map<Airport>(flight), cancellationToken);
-        }
-
-        await airportRepository.Save(cancellationToken);
+        await airportService.ImportAirports(cancellationToken);
         return true;
     }
 }
