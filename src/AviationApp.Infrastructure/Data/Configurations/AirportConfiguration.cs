@@ -27,6 +27,11 @@ public class AirportConfiguration : IEntityTypeConfiguration<Airport>
         
         builder.Property(t => t.CountryName)
             .HasColumnName("country_name")
+            .IsRequired(false)
+            .HasDefaultValue(null);
+        
+        builder.Property(t => t.IataCode)
+            .HasColumnName("iata_code")
             .HasDefaultValue(null);
     }
 }

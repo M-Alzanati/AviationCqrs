@@ -13,8 +13,8 @@ public class FlightInfo
     public LocationInfo? Arrival { get; set; }
     public AirlineInfo? Airline { get; set; }
     public Flight? Flight { get; set; }
-    public object? Aircraft { get; set; }
-    public object? Live { get; set; }
+    public string? Aircraft { get; set; }
+    public string? Live { get; set; }
 }
 
 public class LocationInfo

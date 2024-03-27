@@ -44,5 +44,9 @@ public class FlightConfiguration : IEntityTypeConfiguration<Flight>
         builder.Property(t => t.FlightStatus)
             .HasColumnName("flight_status")
             .HasDefaultValue(null);
+        
+        builder.Property(t => t.IataCode)
+            .HasColumnName("iata_code")
+            .HasDefaultValue(null);
     }
 }

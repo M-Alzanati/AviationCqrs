@@ -8,9 +8,9 @@ public class Flight : IEntity
     
     public DateTime FlightDate { get; set; }
     
-    public string FlightStatus { get; set; }
+    public string? FlightStatus { get; set; }
     
-    public string DepartureAirport { get; set; }
+    public string? DepartureAirport { get; set; }
     
     public DateTime DepartureScheduled { get; set; }
     
@@ -20,5 +20,7 @@ public class Flight : IEntity
 
     public string? AirlineName { get; set; }
     
-    public string FlightNumber { get; set; }
+    public string? FlightNumber { get; set; }
+    
+    public string? IataCode { get; set; }
 }
