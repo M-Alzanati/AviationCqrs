@@ -24,8 +24,8 @@ cd src
 dotnet ef database update --project AviationApp.Infrastructure --startup-project AviationApp.Api
 ```
 To run project with docker
-    ```bash
-    docker build -t myapp:1.0 .
-    docker run -p 8080:80 myapp:1.0
-    curl http://localhost:8080/healthz
-    ```"
+```bash
+docker build -t myapp:1.0 .
+docker run --rm -it -p 5001:8080 myapp:1.0
+curl http://localhost:5001/healthz
+```
