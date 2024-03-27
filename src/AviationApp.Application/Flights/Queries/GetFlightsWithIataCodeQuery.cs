@@ -1,6 +1,7 @@
 using AutoMapper;
 using AviationApp.Application.Common.Interface;
 using AviationApp.Common.Data;
+using FluentValidation;
 using MediatR;
 
 namespace AviationApp.Application.Flights.Queries;
@@ -25,6 +26,24 @@ public class GetFlightsWithIataCodeQuery : IRequest<ApiResponse<PaginatedList<Fl
     /// IataCode is the IATA code of the flights to be retrieved.
     /// </summary>
     public string? IataCode { get; set; }
+}
+
+/// <summary>
+/// GetFlightsWithIataCodeQueryValidator is a validator class for GetFlightsWithIataCodeQuery.
+/// It inherits from AbstractValidator<T> where T is GetFlightsWithIataCodeQuery.
+/// </summary>
+public class GetFlightsWithIataCodeQueryValidator : AbstractValidator<GetFlightsWithIataCodeQuery>
+{
+    /// <summary>
+    /// The constructor of GetFlightsWithIataCodeQueryValidator.
+    /// It defines a rule for the IataCode property of GetFlightsWithIataCodeQuery to not be empty.
+    /// </summary>
+    public GetFlightsWithIataCodeQueryValidator()
+    {
+        RuleFor(x => x.IataCode)
+            .NotEmpty()
+            .WithMessage("IataCode must not be empty.");
+    }
 }
 
 /// <summary>
