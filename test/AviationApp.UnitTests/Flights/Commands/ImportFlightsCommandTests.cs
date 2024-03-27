@@ -23,7 +23,7 @@ public class ImportFlightsCommandTests
 
         var handler = new ImportFlightsCommandHandler(mockFlightRepository.Object, mockAviationStackService.Object,
             mockMapper.Object);
-        var command = new ImportFlightsCommand { Count = 5 };
+        var command = new ImportFlightsCommand ();
 
         // Act
         var result = await handler.Handle(command, CancellationToken.None);
@@ -44,11 +44,11 @@ public class ImportFlightsCommandTests
         var mockMapper = new Mock<IMapper>();
 
         mockAviationStackService.Setup(service => service.GetFlightsData(It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new FlightData() { Data = new List<FlightInfo>() });
+            .ReturnsAsync(new FlightData { Data = new List<FlightInfo>() });
 
         var handler = new ImportFlightsCommandHandler(mockFlightRepository.Object, mockAviationStackService.Object,
             mockMapper.Object);
-        var command = new ImportFlightsCommand { Count = 5 };
+        var command = new ImportFlightsCommand();
 
         // Act
         var result = await handler.Handle(command, CancellationToken.None);

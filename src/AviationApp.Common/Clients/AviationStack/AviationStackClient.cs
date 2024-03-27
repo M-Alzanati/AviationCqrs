@@ -24,4 +24,9 @@ public class AviationStackClient : AbstractRestClient, IAviationStackClient
     {
         return await Get<FlightData>($"flights?access_key={_apiKey}", cancellationToken);
     }
+    
+    public async Task<AirportData> GetAirportsData(CancellationToken cancellationToken)
+    {
+        return await Get<AirportData>($"airports?access_key={_apiKey}", cancellationToken);
+    }
 }

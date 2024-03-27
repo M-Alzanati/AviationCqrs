@@ -40,7 +40,6 @@ namespace AviationApp.Infrastructure.Migrations
                         .HasColumnName("airport_name");
 
                     b.Property<string>("CountryName")
-                        .IsRequired()
                         .HasColumnType("longtext")
                         .HasColumnName("country_name");
 

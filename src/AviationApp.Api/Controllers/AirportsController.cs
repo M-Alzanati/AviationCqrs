@@ -15,10 +15,15 @@ public class AirportsController : ControllerBase
         _mediator = mediator;
     }
 
+    /// <summary>
+    /// Import Flights
+    /// </summary>
+    /// <param name="command"></param>
+    /// <returns></returns>
     [HttpPost]
-    public async Task<IActionResult> CreateAirport([FromBody] CreateAirportCommand command)
+    public async Task<IActionResult> ImportAirports([FromBody] ImportAirportsCommand command)
     {
-        var airportId = await _mediator.Send(command);
-        return CreatedAtAction(nameof(CreateAirport), new { id = airportId }, null);
+        var result = await _mediator.Send(command);
+        return Ok(result);
     }
 }

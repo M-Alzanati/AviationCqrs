@@ -8,7 +8,7 @@ namespace AviationApp.Application.Flights.Commands;
 
 public class ImportFlightsCommand : IRequest<bool>
 {
-    public int Count { set; get; }
+    
 }
 
 public class ImportFlightsCommandHandler(IFlightRepository flightRepository, IAviationStackService aviationStackService, IMapper mapper) : IRequestHandler<ImportFlightsCommand, bool>
@@ -17,9 +17,12 @@ public class ImportFlightsCommandHandler(IFlightRepository flightRepository, IAv
     {
         var flights = await aviationStackService.GetFlightsData(cancellationToken);
 
-        if (flights.Data == null || !flights.Data.Any()) return false;
+        if (flights.Data == null || !flights.Data.Any())
+        {
+            return false;
+        }
         
-        foreach (var flight in flights.Data.Take(request.Count))
+        foreach (var flight in flights.Data)
         {
             await flightRepository.Insert(mapper.Map<Flight>(flight), cancellationToken);
         }

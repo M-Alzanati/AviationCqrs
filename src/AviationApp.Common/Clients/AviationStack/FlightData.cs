@@ -1,18 +1,8 @@
 namespace AviationApp.Common.Clients.AviationStack;
 
-public class FlightData
+public class FlightData : BaseAviationStackResponse<FlightInfo>
 {
-    public Pagination? Pagination { set; get; }
-    
-    public IEnumerable<FlightInfo>? Data { get; set; }
-}
-
-public class Pagination
-{
-    public int Limit { get; set; }
-    public int Offset { get; set; }
-    public int Count { get; set; }
-    public int Total { get; set; }
+    public override IEnumerable<FlightInfo>? Data { get; set; }
 }
 
 public class FlightInfo

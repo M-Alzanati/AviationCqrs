@@ -9,4 +9,9 @@ public class AviationStackService(IAviationStackClient aviationStackClient) : IA
     {
         return aviationStackClient.GetFlightsData(cancellationToken);
     }
+    
+    public Task<AirportData> GetAirportsData(CancellationToken cancellationToken)
+    {
+        return aviationStackClient.GetAirportsData(cancellationToken);
+    }
 }

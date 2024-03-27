@@ -18,24 +18,31 @@ public class FlightConfiguration : IEntityTypeConfiguration<Flight>
             .IsRequired(false);
         
         builder.Property(t => t.FlightNumber)
-            .HasColumnName("flight_number");
+            .HasColumnName("flight_number")
+            .HasDefaultValue(null);
 
         builder.Property(t => t.ArrivalScheduled)
-            .HasColumnName("arrival_scheduled");
+            .HasColumnName("arrival_scheduled")
+            .HasDefaultValue(null);
         
         builder.Property(t => t.ArrivalAirport)
-            .HasColumnName("arrival_airport");
+            .HasColumnName("arrival_airport")
+            .HasDefaultValue(null);
         
         builder.Property(t => t.FlightDate)
-            .HasColumnName("flight_date");
+            .HasColumnName("flight_date")
+            .HasDefaultValue(null);
         
         builder.Property(t => t.DepartureScheduled)
-            .HasColumnName("departure_scheduled");
+            .HasColumnName("departure_scheduled")
+            .HasDefaultValue(null);
         
         builder.Property(t => t.DepartureAirport)
-            .HasColumnName("departure_airport");
+            .HasColumnName("departure_airport")
+            .HasDefaultValue(null);
         
         builder.Property(t => t.FlightStatus)
-            .HasColumnName("flight_status");
+            .HasColumnName("flight_status")
+            .HasDefaultValue(null);
     }
 }

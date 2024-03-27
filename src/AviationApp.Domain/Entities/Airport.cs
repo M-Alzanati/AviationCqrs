@@ -12,5 +12,5 @@ public class Airport : IEntity
     
     public string Timezone { set; get; }
     
-    public string CountryName { set; get; }
+    public string? CountryName { set; get; }
 }

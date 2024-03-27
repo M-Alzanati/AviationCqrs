@@ -14,15 +14,19 @@ public class AirportConfiguration : IEntityTypeConfiguration<Airport>
             .HasName("id");
         
         builder.Property(t => t.Timezone)
-            .HasColumnName("timezone");
+            .HasColumnName("timezone")
+            .HasDefaultValue(null);
         
         builder.Property(t => t.AirportName)
-            .HasColumnName("airport_name");
+            .HasColumnName("airport_name")
+            .HasDefaultValue(null);
         
         builder.Property(t => t.AirportId)
-            .HasColumnName("airport_id");
+            .HasColumnName("airport_id")
+            .HasDefaultValue(null);
         
         builder.Property(t => t.CountryName)
-            .HasColumnName("country_name");
+            .HasColumnName("country_name")
+            .HasDefaultValue(null);
     }
 }
