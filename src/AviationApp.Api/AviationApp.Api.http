@@ -1,6 +1,6 @@
 @AviationApp.Api_HostAddress = http://localhost:5269
 
-GET {{AviationApp.Api_HostAddress}}/weatherforecast/
+GET {{AviationApp.Api_HostAddress}}/healthz/
 Accept: application/json
 
 ###
