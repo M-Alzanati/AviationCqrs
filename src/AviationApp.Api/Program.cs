@@ -1,4 +1,7 @@
 using AviationApp.Api;
+using AviationApp.Common.Data;
+using Microsoft.AspNetCore.Diagnostics;
+using Newtonsoft.Json;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -41,6 +44,26 @@ try
         pattern: "{controller}/{action=Index}/{id?}",
         defaults: new { controller = "Flights" });
 
+    app.UseExceptionHandler(appError =>
+    {
+        appError.Run(async context =>
+        {
+            context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+            context.Response.ContentType = "application/json";
+
+            var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
+            if(contextFeature != null)
+            {
+                await context.Response.WriteAsync(new ErrorDetails
+                {
+                    StatusCode = context.Response.StatusCode,
+                    Message = "Internal Server Error.",
+                    Detailed = contextFeature.Error.Message
+                }.ToString());
+            }
+        });
+    });
+    
     app.Run();
 }
 catch(Exception ex)
