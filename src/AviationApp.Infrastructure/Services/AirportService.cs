@@ -1,7 +1,7 @@
 using AutoMapper;
-using AviationApp.Application.Common.Interface;
 using AviationApp.Domain.Entities;
 using AviationApp.Domain.Interfaces;
+using AviationApp.Domain.Repositories;
 
 namespace AviationApp.Infrastructure.Services;
 

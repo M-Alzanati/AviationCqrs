@@ -1,6 +1,6 @@
 using AviationApp.Common.Clients.AviationStack;
 
-namespace AviationApp.Application.Common.Interface;
+namespace AviationApp.Domain.Interfaces;
 
 public interface IAviationStackService
 {

@@ -1,6 +1,6 @@
 using AviationApp.Domain.Entities;
 
-namespace AviationApp.Application.Common.Interface;
+namespace AviationApp.Domain.Interfaces;
 
 public interface IFlightService
 {

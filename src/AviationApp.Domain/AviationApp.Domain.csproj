@@ -10,4 +10,8 @@
       <Folder Include="ValueObjects\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\AviationApp.Common\AviationApp.Common.csproj" />
+    </ItemGroup>
+
 </Project>

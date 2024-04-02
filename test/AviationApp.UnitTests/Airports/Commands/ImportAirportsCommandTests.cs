@@ -1,5 +1,5 @@
 using AviationApp.Application.Airports.Commands;
-using AviationApp.Application.Common.Interface;
+using AviationApp.Domain.Interfaces;
 using Moq;
 
 namespace AviationApp.UnitTests.Airports.Commands;

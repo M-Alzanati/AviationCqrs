@@ -1,6 +1,6 @@
 using AviationApp.Domain.Entities;
 
-namespace AviationApp.Domain.Interfaces;
+namespace AviationApp.Domain.Repositories;
 
 public interface IAirportRepository : IRepository<Airport>
 {

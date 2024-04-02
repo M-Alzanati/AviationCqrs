@@ -1,7 +1,7 @@
 using System.Linq.Expressions;
 using AviationApp.Domain.Entities.Base;
 
-namespace AviationApp.Domain.Interfaces;
+namespace AviationApp.Domain.Repositories;
 
 public interface IRepository<T> where T : class, IEntity
 {
