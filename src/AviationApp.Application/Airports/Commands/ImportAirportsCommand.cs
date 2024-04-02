@@ -1,5 +1,5 @@
 using AviationApp.Common.Data;
-using AviationApp.Domain.Interfaces;
+using AviationApp.Domain.Services;
 using MediatR;
 
 namespace AviationApp.Application.Airports.Commands;

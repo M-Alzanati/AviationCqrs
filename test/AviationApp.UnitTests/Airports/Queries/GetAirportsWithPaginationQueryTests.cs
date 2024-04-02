@@ -1,7 +1,7 @@
 using AutoMapper;
 using AviationApp.Application.Airports.Queries;
 using AviationApp.Domain.Entities;
-using AviationApp.Domain.Interfaces;
+using AviationApp.Domain.Services;
 using Moq;
 
 namespace AviationApp.UnitTests.Airports.Queries;

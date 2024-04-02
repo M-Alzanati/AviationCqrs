@@ -1,6 +1,6 @@
 using AutoMapper;
 using AviationApp.Common.Data;
-using AviationApp.Domain.Interfaces;
+using AviationApp.Domain.Services;
 using MediatR;
 
 namespace AviationApp.Application.Flights.Queries;

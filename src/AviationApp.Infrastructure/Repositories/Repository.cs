@@ -1,6 +1,5 @@
 using System.Linq.Expressions;
 using AviationApp.Domain.Entities.Base;
-using AviationApp.Domain.Interfaces;
 using AviationApp.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 

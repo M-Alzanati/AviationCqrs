@@ -1,5 +1,5 @@
 using AviationApp.Common.Clients.AviationStack;
-using AviationApp.Domain.Interfaces;
+using AviationApp.Domain.Services;
 
 namespace AviationApp.Infrastructure.Services;
 

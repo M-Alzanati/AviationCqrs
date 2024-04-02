@@ -1,6 +1,6 @@
 using AviationApp.Domain.Entities;
 
-namespace AviationApp.Domain.Interfaces;
+namespace AviationApp.Domain.Services;
 
 public interface IAirportService
 {
